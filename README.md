@@ -1,6 +1,7 @@
 # generateRubrics
 
 A simple tool to create individual rubric copies for each student
+A cross-platform, open-source solution for a specific use case
 
 ## Features
 - Reads a list of student names from a text file.
