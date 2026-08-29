@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-generate_rubrics.py - Create individual rubric copies for each student.
+generateRubrics.py - Create individual rubric copies for each student.
 
 Usage:
-    python generate_rubrics.py -inputFile names.txt -fileToCopy rubric.xlsx [--assignment ASMT]
+    python generateRubrics.py -inputFile names.txt -fileToCopy rubric.xlsx [--assignment ASMT]
 
 Options:
     -inputFile PATH        Text file with one student name per line.
@@ -61,33 +61,21 @@ def main():
     # Create output folder
     os.makedirs(args.outputFolder, exist_ok=True)
 
-    # Build base part of the new filename
-    base = os.path.basename(args.fileToCopy)  # e.g., Assignment-02-Rubric.xlsx
-    name_base, ext = os.path.splitext(base)   # ("Assignment-02-Rubric", ".xlsx")
-
-    # If --assignment is given, insert it into the name (e.g., "Assignment-02-Rubric")
-    # but the user might already have a filename with the assignment number.
-    # We'll simply prefix the student name and, if --assignment is provided,
-    # we'll replace or add the assignment part? Let's do a simple approach:
-    # If --assignment is given, we'll construct: <name>-Assignment-<assignment>-Rubric.xlsx
-    # Otherwise we just prepend the student name to the original filename.
-    if args.assignment:
-        # Build new name: e.g., JohnDoe-Assignment-02-Rubric.xlsx
-        new_base = f"Assignment-{args.assignment}-Rubric"
-        # But we need to keep the original extension
-        # We'll replace the base name entirely, but keep the extension.
-        new_filename = f"{name}-{new_base}{ext}"
-    else:
-        # Just prepend the student name to the original filename
-        new_filename = f"{name}-{base}"
+    # Split the base filename into name and extension
+    base = os.path.basename(args.fileToCopy)   # e.g., Assignment-01-Rubric.csv
+    base_name, ext = os.path.splitext(base)    # ("Assignment-01-Rubric", ".csv")
 
     success_count = 0
     for name in names:
-        # If using assignment, we use the new_filename pattern for each
+        # Construct new filename: <student> + - + (Assignment-XX-Rubric) + ext
         if args.assignment:
-            new_filename = f"{name}-Assignment-{args.assignment}-Rubric{ext}"
+            # Build: Student-Assignment-XX-Rubric.ext
+            new_base = f"Assignment-{args.assignment}-Rubric"
+            new_filename = f"{name}-{new_base}{ext}"
         else:
+            # Prepend student name to original filename
             new_filename = f"{name}-{base}"
+
         dest_path = os.path.join(args.outputFolder, new_filename)
 
         try:
