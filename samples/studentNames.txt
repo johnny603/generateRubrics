@@ -2,3 +2,5 @@ JaneDoe
 JohnSmith
 AliceWonder
 BobBuilder
+CharlieBrown
+DianaPrince
