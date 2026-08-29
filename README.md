@@ -1,6 +1,6 @@
 # generateRubrics
 
-A simple tool to create individual rubric copies for each student, exactly like the `generateStudentRubrics.exe` described in your course documentation.
+A simple tool to create individual rubric copies for each student, exactly like the `generateStudentRubrics.exe` documentation.
 
 ## Features
 - Reads a list of student names from a text file.
