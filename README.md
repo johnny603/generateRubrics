@@ -98,4 +98,11 @@ Works everywhere – no need to compile an .exe or switch operating systems.
    ```
    python3 generateRubrics.py -inputFile studentNames.txt -fileToCopy Assignment-02-Rubric.xlsx --assignment 02
    ```
+Tip:
+if you want to make copies from all the xlsx files:
+```
+for file in *.xlsx; do 
+    python3 generateRubrics.py -inputFile samples/studentNames.txt -fileToCopy "$file"
+done
+```
 That's it! Your Rubrics/ folder will populate with real .xlsx copies.
