@@ -4,7 +4,7 @@ A simple tool to create individual rubric copies for each student
 
 ## Features
 - Reads a list of student names from a text file.
-- Copies a rubric template (`.xlsx`, `.csv`, `.pdf`, or any file type) for every student.
+- Copies a rubric template (`.xlsx`, `.csv`, `.pdf`, or any file type) for a recipient.
 - Renames each copy with the student’s name and assignment number.
 - Places all copies into a single folder (`Rubrics` by default).
 - Works on macOS, Linux, and Windows.
